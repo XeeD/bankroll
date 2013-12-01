@@ -1,0 +1,23 @@
+<h1>Listing casinos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @casinos.each do |casino| %>
+  <tr>
+    <td><%= casino.name %></td>
+    <td><%= link_to 'Show', casino %></td>
+    <td><%= link_to 'Edit', edit_casino_path(casino) %></td>
+    <td><%= link_to 'Destroy', casino, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Casino', new_casino_path %>

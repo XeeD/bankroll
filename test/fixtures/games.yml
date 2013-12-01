@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  buyin: 1
+  prize: 1
+  variant_id: 1
+  casino_id: 1
+
+two:
+  buyin: 1
+  prize: 1
+  variant_id: 1
+  casino_id: 1

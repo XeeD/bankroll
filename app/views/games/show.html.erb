@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Buyin:</b>
+  <%= @game.buyin %>
+</p>
+
+<p>
+  <b>Prize:</b>
+  <%= @game.prize %>
+</p>
+
+<p>
+  <b>Variant:</b>
+  <%= @game.variant_id %>
+</p>
+
+<p>
+  <b>Casino:</b>
+  <%= @game.casino_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>
