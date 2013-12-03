@@ -4,7 +4,7 @@ class Variant < ActiveRecord::Base
 
   validates :name, presence: true
 
-  def prizes_sum(id)
-    games.where(:user_id => id).sum(:prize) - games.where(:user_id => id).sum(:buyin)
+  def prizes_sum(variant)
+    variant.games.sum(:prize) - variant.games.sum(:buyin)
   end
 end
