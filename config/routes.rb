@@ -1,4 +1,6 @@
 Bankroll::Application.routes.draw do
+  devise_for :users
+
   resources :users
 
 
@@ -13,6 +15,7 @@ Bankroll::Application.routes.draw do
 
   resources :stats
 
+  root :to => 'stats#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

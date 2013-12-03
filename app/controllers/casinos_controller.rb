@@ -2,7 +2,7 @@ class CasinosController < ApplicationController
   # GET /casinos
   # GET /casinos.json
   def index
-    @casinos = Casino.all
+    @casinos = current_user.casinos
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +41,7 @@ class CasinosController < ApplicationController
   # POST /casinos.json
   def create
     @casino = Casino.new(params[:casino])
+    @casino.user_id = current_user.id
 
     respond_to do |format|
       if @casino.save

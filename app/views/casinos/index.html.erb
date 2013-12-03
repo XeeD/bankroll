@@ -11,6 +11,7 @@
 <% @casinos.each do |casino| %>
   <tr>
     <td><%= casino.name %></td>
+    <td><%= casino.user.email %></td>
     <td><%= link_to 'Show', casino %></td>
     <td><%= link_to 'Edit', edit_casino_path(casino) %></td>
     <td><%= link_to 'Destroy', casino, method: :delete, data: { confirm: 'Are you sure?' } %></td>

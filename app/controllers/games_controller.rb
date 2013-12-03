@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    @games = Game.all
+    @games = current_user.games
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @games }
@@ -30,6 +30,7 @@ class GamesController < ApplicationController
   # POST /games.json
   def create
     @game = Game.new(params[:game])
+    @game.user_id = current_user.id
 
       if @game.save
         redirect_to games_url, notice: 'Game was successfully created.'

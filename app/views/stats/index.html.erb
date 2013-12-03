@@ -1,17 +1,31 @@
 <h2>Total balance</h2>
-<p><%= add_bullshit(Game.sum(:prize)) %></p>
+<p><%= add_bullshit Game.prizes_sum(current_user.id) %></p>
 
 <h2>Filtered by...</h2>
 <h3>Game variants</h3>
+<table>
+  <tr>
+    <th>Variant name</th>
+    <th>Balance</th>
+  </tr>
 <% Variant.all.each do |variant| %>
-    <h4><%= variant.name %></h4>
-    <p>
-      <%= add_bullshit variant.prizes_sum %>
-    </p>
+  <tr>
+    <td><%= variant.name %></td>
+    <td><%= add_bullshit variant.prizes_sum(current_user.id) %></td>
+  </tr>
 <% end %>
+</table>
 
 <h3>Casinos</h3>
-<% Casino.all.each do |casino| %>
-    <h4><%= casino.name %></h4>
-    <p><%= add_bullshit casino.prizes_sum %></p>
-<% end %>
+<table>
+  <tr>
+    <th>Casino name</th>
+    <th>Balance</th>
+  </tr>
+  <% current_user.casinos.each do |casino| %>
+      <tr>
+        <td><%= casino.name %></td>
+        <td><%= add_bullshit casino.prizes_sum %></td>
+      </tr>
+      <% end %>
+</table>

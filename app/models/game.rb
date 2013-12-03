@@ -2,14 +2,11 @@ class Game < ActiveRecord::Base
   attr_accessible :buyin, :casino_id, :prize, :variant_id
   belongs_to :casino
   belongs_to :variant
+  belongs_to :user
 
-  def self.create_keys_names(array, key_1, key_2)
-    result = {}
-    id = 0
-    array.each do |a|
-      result[id] = {key_1 => a[0], key_2 => a[1]}
-      id += 1
-    end
-    named_hash = result
+  validates :buyin, numericality: { greater_than_or_equal_to: 0 }
+  validates :prize, numericality: { greater_than_or_equal_to: 0 }
+  def self.prizes_sum(id)
+    Game.where(:user_id => id).sum(:prize) - Game.where(:user_id => id).sum(:buyin)
   end
 end

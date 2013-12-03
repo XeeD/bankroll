@@ -16,6 +16,7 @@
     <td><%= game.prize %></td>
     <td><%= game.variant.name %></td>
     <td><%= game.casino.name %></td>
+    <td><%= game.user.email %></td>
     <td><%= link_to 'Change', edit_game_path(game) %></td>
     <td><%= link_to 'Delete', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
