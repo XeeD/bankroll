@@ -1,5 +1,5 @@
 <h2>Total balance</h2>
-<p><%= add_bullshit Game.prizes_sum(current_user) %></p>
+<p><%= add_bullshit Game.prizes_sum current_user %></p>
 
 <h2>Filtered by...</h2>
 <h3>Game variants</h3>
@@ -11,7 +11,7 @@
 <% Variant.all.each do |variant| %>
   <tr>
     <td><%= variant.name %></td>
-    <td><%= add_bullshit variant.prizes_sum variant %></td>
+    <td><%= add_bullshit variant.prizes_sum variant%></td>
   </tr>
 <% end %>
 </table>

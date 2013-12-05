@@ -6,7 +6,12 @@ class Game < ActiveRecord::Base
 
   validates :buyin, numericality: { greater_than_or_equal_to: 0 }
   validates :prize, numericality: { greater_than_or_equal_to: 0 }
+
   def self.prizes_sum(user)
     user.games.sum(:prize) - user.games.sum(:buyin)
+  end
+
+  def self.import(file)
+    workbook = Roo::Excel.new(file)
   end
 end

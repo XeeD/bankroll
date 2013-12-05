@@ -1,8 +1,12 @@
 class GamesController < ApplicationController
+
+  # Possible to define my own GamesController methods? (import)
+
   # GET /games
   # GET /games.json
   def index
     @games = current_user.games
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @games }
@@ -66,5 +70,7 @@ class GamesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
 
 end

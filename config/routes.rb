@@ -15,6 +15,8 @@ Bankroll::Application.routes.draw do
 
   resources :stats
 
+  resources :import
+
   root :to => 'stats#index'
 
   # The priority is based upon order of creation:
