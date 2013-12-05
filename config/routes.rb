@@ -10,12 +10,15 @@ Bankroll::Application.routes.draw do
   resources :casinos
 
 
-  resources :games, except: :show
+  resources :games, except: :show do
+    collection do
+      post :import
+      get :prepare_import
+    end
+  end
 
 
   resources :stats
-
-  resources :import
 
   root :to => 'stats#index'
 

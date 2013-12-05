@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
 
-  # Possible to define my own GamesController methods? (import)
+  # Possire_import
 
   # GET /games
   # GET /games.json
@@ -30,17 +30,24 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
+  def prepare_import
+  end
+
+  def import
+    @workbook = Game.import(params[:file], current_user)
+  end
+
   # POST /games
   # POST /games.json
   def create
     @game = Game.new(params[:game])
     @game.user_id = current_user.id
 
-      if @game.save
-        redirect_to games_url, notice: 'Game was successfully created.'
-      else
-        render action: "new"
-      end
+    if @game.save
+      redirect_to games_url, notice: 'Game was successfully created.'
+    else
+      render action: "new"
+    end
   end
 
   # PUT /games/1
