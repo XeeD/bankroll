@@ -34,7 +34,9 @@ class GamesController < ApplicationController
   end
 
   def import
-    @workbook = Game.import(params[:file], current_user)
+    GamesImport.new(params[:file], current_user).create_records
+
+    redirect_to games_url, notice: 'Hry byly importovány'
   end
 
   # POST /games

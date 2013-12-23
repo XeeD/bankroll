@@ -7,4 +7,8 @@ class Variant < ActiveRecord::Base
   def prizes_sum(variant)
     variant.games.sum(:prize) - variant.games.sum(:buyin)
   end
+
+  def self.with_name(name)
+    where('name LIKE ?', name).first_or_create(name: name)
+  end
 end
