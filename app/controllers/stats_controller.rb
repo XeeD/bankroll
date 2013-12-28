@@ -1,5 +1,6 @@
 class StatsController < ApplicationController
   def index
+    @casinos = Casino.for_user_and_visible(current_user.id)
   end
 
   def show

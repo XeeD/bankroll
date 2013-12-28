@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :casino_id %><br />
-    <%= f.collection_select :casino_id, current_user.casinos, :id, :name %>
+    <%= f.collection_select :casino_id, Casino.for_user_and_visible(current_user.id), :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -11,13 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131203093837) do
+ActiveRecord::Schema.define(:version => 20131227130809) do
 
   create_table "casinos", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
+    t.boolean  "public"
+    t.boolean  "visible"
   end
 
   create_table "games", :force => true do |t|
@@ -46,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20131203093837) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "is_admin"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -13,7 +13,7 @@ class GamesImport
 
   def games_attributes
     workbook.map do |line|
-      variant = Variant.with_name(line[2])
+      variant = Variant.with_ name(line[2])
       casino = Casino.with_name(line[3])
 
       {

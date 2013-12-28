@@ -8,8 +8,9 @@
 </head>
 <body>
 
-<% if flash[:notice].present? %>
-<div class='flash_notice'><%= flash[:notice] %></div>
+
+<% flash.each do |key, message| %>
+  <div class='flash_<%= key %>'><%= message %></div>
 <% end %>
 
 <div id="user_nav">
@@ -21,7 +22,6 @@
 </div>
 
 <%= yield %>
-
 <p>
   <%= link_to 'Statistics (home)', root_path %><br />
   <%= link_to 'Manage games', games_path %><br />

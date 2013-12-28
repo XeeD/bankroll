@@ -1,4 +1,4 @@
-class VariantsController < ApplicationController
+class VariantsController < SecuredController
   # GET /variants
   # GET /variants.json
   def index

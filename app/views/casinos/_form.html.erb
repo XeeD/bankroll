@@ -13,7 +13,9 @@
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name %><br />
+    <%= f.check_box :public %>
+    <%= f.label :public %>
   </div>
   <div class="actions">
     <%= f.submit %>

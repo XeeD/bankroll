@@ -1,13 +1,18 @@
 Bankroll::Application.routes.draw do
   devise_for :users
-
-  resources :users
+  resources :users, path: 'user_admin'
 
 
   resources :variants
 
 
   resources :casinos
+
+  resources :public_casinos, only: :index do
+    collection do
+      put :set
+    end
+  end
 
 
   resources :games, except: :show do
