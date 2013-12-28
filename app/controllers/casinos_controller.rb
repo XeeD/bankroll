@@ -42,6 +42,7 @@ class CasinosController < ApplicationController
   def create
     @casino = Casino.new(params[:casino])
     @casino.user_id = current_user.id
+    @casino.visible = true
 
     respond_to do |format|
       if @casino.save

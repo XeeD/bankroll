@@ -13,5 +13,10 @@ class Casino < ActiveRecord::Base
     where('name LIKE ?', name).first_or_create(name: name)
   end
 
-  scope :for_user_and_visible, ->(user_id) { where("user_id = ? OR (visible = ? AND public = ?)", user_id, true, true) }
+  def self.set_visibility(params)
+    update_all(visible: false)
+    where(id: params).update_all(visible: true)
+  end
+
+  scope :for_user_and_visible, lambda { |user_id| where("user_id = ? OR (visible = ? AND public = ?)", user_id, true, true) }
 end

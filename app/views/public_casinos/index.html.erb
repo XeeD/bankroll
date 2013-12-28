@@ -1,0 +1,26 @@
+<h1>Listing casinos</h1>
+<%= form_tag set_public_casinos_path, method: :put do %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>User</th>
+    <th>Visible</th>
+    <th></th>
+  </tr>
+
+<% @casinos.each do |casino| %>
+  <tr>
+    <td><%= casino.name %></td>
+    <td><%= casino.user.email %></td>
+    <td><%= check_box_tag 'casino_ids[]', casino.id, casino.visible? %></td>
+    <td><%= link_to 'Edit', edit_casino_path(casino) %></td>
+    <td><%= link_to 'Destroy', casino, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+  <%= submit_tag 'Set visibility' %>
+
+<% end %>
+<br />
+
+<%= link_to 'New Casino', new_casino_path %>
